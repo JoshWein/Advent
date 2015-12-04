@@ -9,23 +9,17 @@ import java.security.NoSuchAlgorithmException;
  * @author Josh Wein
  */
 public class Advent4 {
-
     public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+        MessageDigest md = MessageDigest.getInstance("MD5");
         int i =0;
-        StringBuilder sb = new StringBuilder();
-        sb.append("11111111");
-        String test;
         byte[] array;
-        while(!sb.substring(0, 6).equals("000000")) {
-            sb.setLength(0);
-            test = "bgvyzdsv".concat(Integer.toString(i++));
-            array = md.digest(test.getBytes());
-            for (int j = 0; j < array.length; ++j) {
-                sb.append(Integer.toHexString((array[j] & 0xFF) | 0x100).substring(1, 3)); 
+        while(true) {
+            array = md.digest("bgvyzdsv".concat(Integer.toString(i++)).getBytes()); // Put input here
+            if(array[0] == 0 && array[1] == 0 && (array[2]>> 4 & 0xf) == 0) {
+                if(array[2] == 0) // Comment out to do part 1.
+                    break;
             }
         }
-        System.out.println(sb);
         System.out.println("Lowest value needed: " + (i-1));
     }
 }
