@@ -12,7 +12,7 @@ public class Advent1 {
         for (int i = 0; i < content.length(); i++) {
             answer += content.charAt(i) == '(' ? 1 : -1; // Calculate final floor, check if '(', add one, if not add -1.
             if (answer == -1 && !found) {
-                System.out.println("First -1 at pos: " + (i + 1)); // first print is the first -1 ignore rest
+                System.out.println("First -1 at pos: " + (i + 1)); // Part 2: Find the first time it hits -1
                 found = true;
             }
         }
