@@ -2,31 +2,38 @@ package advent3;
 
 /**
  *
- * @author Josh Wein
+ * @author Josh Wein 
  * For fun I used a giant ternary chain to calculate direction.
  */
 public class Advent3 {
 
     public static void main(String[] args) {
         String input = getInput();
-        int size = findMaxDir(input),cur1X = size / 2, cur1Y = size / 2, cur2X = size / 2, cur2Y = size / 2, houses = 1, dir;
-        int[][] town = new int[size][size]; // Create a 2D array that will fit largest movement       
+        long time = System.currentTimeMillis();
+        int size = findMaxDir(input);
+        size *= 2.5;
+        int cur1X = size / 2, cur1Y = size / 2, cur2X = size / 2, cur2Y = size / 2, houses = 1, dir; // Put our starting position in the center of the grid
+        int[][] town = new int[size][size]; // Create a 2D array that will fit largest movement in one direction      
         town[cur1X][cur1Y] += 2;
         for (int i = 0; i < input.length(); i += 2) {
-            dir = input.charAt(i) == '^' ? cur1Y++ : input.charAt(i) == 'v' ? cur1Y-- : input.charAt(i) == '>' ? cur1X++: cur1X--;
-            if(++town[cur1X][cur1Y] == 1) // If house is visited for the first time increment list
+            dir = input.charAt(i) == '^' ? cur1Y++ : input.charAt(i) == 'v' ? cur1Y-- : input.charAt(i) == '>' ? cur1X++ : cur1X--;
+            if (++town[cur1X][cur1Y] == 1) // If house is visited for the first time increment list
+            {
                 houses++;
-            dir = input.charAt(i+1) == '^' ? cur2Y++ : input.charAt(i+1) == 'v' ? cur2Y-- : input.charAt(i+1) == '>' ? cur2X++: cur2X--;            
-            if(++town[cur2X][cur2Y] == 1)
-                houses++;            
+            }
+            dir = input.charAt(i + 1) == '^' ? cur2Y++ : input.charAt(i + 1) == 'v' ? cur2Y-- : input.charAt(i + 1) == '>' ? cur2X++ : cur2X--;
+            if (++town[cur2X][cur2Y] == 1) {
+                houses++;
+            }
         }
+        System.out.println("Total time: " + (System.currentTimeMillis() - time) + "ms"); // Time to complete
         System.out.println("Total houses with 1 or more presents: " + houses);
     }
 
     public static int findMaxDir(String input) {
         int north = 0, south = 0, east = 0, west = 0, dir;
         for (int i = 0; i < input.length(); i++) {
-             dir = input.charAt(i) == '^' ?  north++ : input.charAt(i) == 'v' ? south++ : input.charAt(i) == '>' ? east++: west--;
+            dir = input.charAt(i) == '^' ? north++ : input.charAt(i) == 'v' ? south++ : input.charAt(i) == '>' ? east++ : west--;
         }
         return Math.max(Math.max(Math.max(north, south), east), west);
     }
