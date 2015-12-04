@@ -1,38 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package advent2;
 
 import java.util.Arrays;
 
 /**
  *
- * @author josh
+ * @author Josh Wein
  */
 public class Advent2 {
       public static void main(String[] args) {
         String[] input = getInput().split("\\n");
         int total = 0;
         int bowLength = 0;
-        for(String a : input) {
-            String[] line = a.split("x");
+        long time = System.currentTimeMillis();
+        for(String a : input) { // Grab each line one by one
+            String[] line = a.split("x"); // Split on the 'x' to get 3 tokens
             int[] dimensions = new int[3];
-            dimensions[0] = Integer.parseInt(line[0]);
-            dimensions[1] = Integer.parseInt(line[1]);
-            dimensions[2] = Integer.parseInt(line[2]);
-            System.out.println(a);
-            int[] tokens = new int[3];
-            tokens[0] = dimensions[0] * dimensions[1];
-            tokens[1] = dimensions[1] * dimensions[2];
-            tokens[2] = dimensions[2] * dimensions[0];
-            total += (2 * tokens[0]) + (2 * tokens[1]) + (2 * tokens[2]) + Math.min(Math.min(tokens[0], tokens[1]), tokens[2]);
+            dimensions[0] = Integer.parseInt(line[0]); // store length
+            dimensions[1] = Integer.parseInt(line[1]); // store width
+            dimensions[2] = Integer.parseInt(line[2]); // store height
+            total += (2 * dimensions[0] * dimensions[1]) + // 2*l*w
+                    (2 * dimensions[1] * dimensions[2]) +  // 2*w*h
+                    (2 * dimensions[2] * dimensions[0]) +  // 2*h*l
+                    Math.min(Math.min( dimensions[0] * dimensions[1], dimensions[1] * dimensions[2]), dimensions[2] * dimensions[0]); // Get smallest size: min(min(l*w, w*h), h*l)
             bowLength += (dimensions[0] * dimensions[1] * dimensions[2]);            
-            Arrays.sort(dimensions);
-            bowLength += (dimensions[0]+dimensions[0]) + (dimensions[1]+ dimensions[1]);
-            System.out.println(bowLength);
+            Arrays.sort(dimensions); // Sort to get 2 smallest sides at pos 1 & 2
+            bowLength += (dimensions[0]+dimensions[0]) + (dimensions[1]+ dimensions[1]); 
         }
+        System.out.println("Total time: " + (System.currentTimeMillis() - time) + "ms"); // Time to complete
         System.out.println("Wrapping papper needed: " + total + " sq. ft");
         System.out.println("Ribbon needed: " + bowLength + " sq. ft");
     }
