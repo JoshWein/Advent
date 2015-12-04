@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * @author Josh Wein
+ *  @author Josh Wein
  */
 public class Advent1 {
     public static void main(String[] args) {
