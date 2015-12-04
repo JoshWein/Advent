@@ -5,12 +5,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- *
  * @author Josh Wein
  */
 public class Advent4 {
     public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        MessageDigest md = MessageDigest.getInstance("MD5");
+        MessageDigest md = MessageDigest.getInstance("MD5"); 
         int i = 0;
         byte[] array;
         long a = System.currentTimeMillis();
