@@ -1,4 +1,4 @@
-package advent2;
+package advent02;
 
 import java.util.Arrays;
 
