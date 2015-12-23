@@ -5,7 +5,7 @@
  *
  *
  */
-package advent8;
+package advent08;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
