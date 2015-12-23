@@ -6,7 +6,7 @@
  *
  */
 
-package advent6;
+package advent06;
 
 /**
  *
