@@ -5,7 +5,7 @@
  *
  *
  */
-package advent7;
+package advent07;
 
 import java.util.Arrays;
 import java.util.HashMap;
