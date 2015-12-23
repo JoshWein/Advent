@@ -1,4 +1,4 @@
-package advent3;
+package advent03;
 
 /**
  *
