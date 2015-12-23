@@ -1,4 +1,4 @@
-package advent4;
+package advent04;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
