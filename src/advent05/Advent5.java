@@ -5,7 +5,7 @@
  *
  *
  */
-package advent5;
+package advent05;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
