@@ -1,4 +1,4 @@
-package advent1;
+package advent01;
 
 /**
  * @author Josh Wein
