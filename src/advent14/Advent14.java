@@ -56,15 +56,7 @@ public class Advent14 {
     }
 
     static class Deer {
-
-        int speed;
-        int ftime;
-        int rtime;
-        int location;
-        int status; // 0 = rest, 1 = fly
-        int holder;
-        int points;
-
+        int speed, ftime, rtime, location, status, holder, points;
         Deer(int speed, int ftime, int rtime) {
             this.speed = speed;
             this.ftime = ftime;            
